@@ -1,19 +1,19 @@
-import {KTSVG} from '../../../../../../_metronic/helpers'
+import {KTSVG} from '../../../../../../../../_metronic/helpers'
 import {useListView} from '../core/ListViewProvider'
 
-const BankEditModalHeader = () => {
+const ApprovalEditModalHeader = () => {
   const {setItemIdForUpdate} = useListView()
 
   return (
     <div className='modal-header'>
       {/* begin::Modal title */}
-      <h2 className='fw-bolder'>Add Bank</h2>
+      <h2 className='fw-bolder'>Add Approval</h2>
       {/* end::Modal title */}
 
       {/* begin::Close */}
       <div
         className='btn btn-icon btn-sm btn-active-icon-primary'
-        data-kt-banks-modal-action='close'
+        data-kt-approvals-modal-action='close'
         onClick={() => setItemIdForUpdate(undefined)}
         style={{cursor: 'pointer'}}
       >
@@ -24,4 +24,4 @@ const BankEditModalHeader = () => {
   )
 }
 
-export {BankEditModalHeader}
+export {ApprovalEditModalHeader}

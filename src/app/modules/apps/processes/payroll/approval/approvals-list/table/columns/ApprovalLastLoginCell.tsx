@@ -4,8 +4,8 @@ type Props = {
   last_login?: string
 }
 
-const UserLastLoginCell: FC<Props> = ({last_login}) => (
+const ApprovalLastLoginCell: FC<Props> = ({last_login}) => (
   <div className='badge badge-light fw-bolder'>{last_login}</div>
 )
 
-export {UserLastLoginCell}
+export {ApprovalLastLoginCell}

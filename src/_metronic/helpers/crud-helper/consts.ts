@@ -31,6 +31,7 @@ const QUERIES = {
   CURRENCYS_LIST: 'users-list',
   BENEFITS_LIST: 'users-list',
   APPROVALLEVELS_LIST: 'users-list',
+  APPROVALS_LIST: 'users-list',
 }
 
 export {QUERIES}

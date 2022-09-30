@@ -1,42 +1,42 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import clsx from 'clsx'
 import {FC} from 'react'
-import {toAbsoluteUrl} from '../../../../../../../_metronic/helpers'
-import {Bank} from '../../core/_models'
+import {toAbsoluteUrl} from '../../../../../../../../../_metronic/helpers'
+import {Approval} from '../../core/_models'
 
 type Props = {
-  bank: Bank
+  approval: Approval
 }
 
-const BankInfoCell: FC<Props> = ({bank}) => (
+const ApprovalInfoCell: FC<Props> = ({approval}) => (
   <div className='d-flex align-items-center'>
     {/* begin:: Avatar */}
     <div className='symbol symbol-circle symbol-50px overflow-hidden me-3'>
       <a href='#'>
-        {bank.avatar ? (
+        {approval.avatar ? (
           <div className='symbol-label'>
-            <img src={toAbsoluteUrl(`/media/${bank.avatar}`)} alt={bank.name} className='w-100' />
+            <img src={toAbsoluteUrl(`/media/${approval.avatar}`)} alt={approval.name} className='w-100' />
           </div>
         ) : (
           <div
             className={clsx(
               'symbol-label fs-3',
-              `bg-light-${bank.initials?.state}`,
-              `text-${bank.initials?.state}`
+              `bg-light-${approval.initials?.state}`,
+              `text-${approval.initials?.state}`
             )}
           >
-            {bank.initials?.label}
+            {approval.initials?.label}
           </div>
         )}
       </a>
     </div>
     <div className='d-flex flex-column'>
       <a href='#' className='text-gray-800 text-hover-primary mb-1'>
-        {bank.name}
+        {approval.name}
       </a>
-      <span>{bank.email}</span>
+      <span>{approval.email}</span>
     </div>
   </div>
 )
 
-export {BankInfoCell}
+export {ApprovalInfoCell}

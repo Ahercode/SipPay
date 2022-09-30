@@ -1,32 +1,32 @@
 import {ListViewProvider, useListView} from './core/ListViewProvider'
 import {QueryRequestProvider} from './core/QueryRequestProvider'
 import {QueryResponseProvider} from './core/QueryResponseProvider'
-import {BanksListHeader} from './components/header/BanksListHeader'
-import {BanksTable} from './table/BanksTable'
-import {BankEditModal} from './bank-edit-modal/BankEditModal'
-import {KTCard} from '../../../../../_metronic/helpers'
+import {ApprovalsListHeader} from './components/header/ApprovalsListHeader'
+import {ApprovalsTable} from './table/ApprovalsTable'
+import {ApprovalEditModal} from './approval-edit-modal/ApprovalEditModal'
+import {KTCard} from '../../../../../../../_metronic/helpers'
 
-const BanksList = () => {
+const ApprovalsList = () => {
   const {itemIdForUpdate} = useListView()
   return (
     <>
       <KTCard>
-        <BanksListHeader />
-        <BanksTable />
+        <ApprovalsListHeader />
+        <ApprovalsTable />
       </KTCard>
-      {itemIdForUpdate !== undefined && <BankEditModal />}
+      {itemIdForUpdate !== undefined && <ApprovalEditModal />}
     </>
   )
 }
 
-const BanksListWrapper = () => (
+const ApprovalsListWrapper = () => (
   <QueryRequestProvider>
     <QueryResponseProvider>
       <ListViewProvider>
-        <BanksList />
+        <ApprovalsList />
       </ListViewProvider>
     </QueryResponseProvider>
   </QueryRequestProvider>
 )
 
-export {BanksListWrapper}
+export {ApprovalsListWrapper}

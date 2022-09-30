@@ -1,5 +1,5 @@
-import {ID, Response} from '../../../../../../_metronic/helpers'
-export type Bank = {
+import {ID, Response} from '../../../../../../../../_metronic/helpers'
+export type Approval = {
   id?: ID
   name?: string
   avatar?: string
@@ -16,9 +16,9 @@ export type Bank = {
   }
 }
 
-export type BanksQueryResponse = Response<Array<Bank>>
+export type ApprovalsQueryResponse = Response<Array<Approval>>
 
-export const initialBank: Bank = {
+export const initialApproval: Approval = {
   avatar: 'avatars/300-6.jpg',
   position: 'Art Director',
   role: 'Administrator',

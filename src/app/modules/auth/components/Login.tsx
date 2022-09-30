@@ -130,6 +130,7 @@ export function Login() {
             {/* end::Link */}
           </div>
         </div>
+        
         <input
           type='password'
           autoComplete='off'
@@ -152,6 +153,26 @@ export function Login() {
           </div>
         )}
       </div>
+      <div className='fv-row mb-7'>
+            {/* begin::Label */}
+            <label className='required fw-bold fs-6 mb-2'>Company</label>
+            {/* end::Label */}
+
+            {/* begin::Input */}
+            <select name="code" id="cars" className={clsx(
+               'form-control form-control-solid mb-3 mb-lg-0',
+               
+             )}>
+             <option value="active">Company 1</option>
+             <option value="inactive">Company 2</option>
+             <option value="inactive">Company 3</option>
+             <option value="inactive">Company 4</option>
+             <option value="inactive">Company 5</option>
+             
+           </select>
+           
+            
+          </div>
       {/* end::Form group */}
 
       {/* begin::Action */}

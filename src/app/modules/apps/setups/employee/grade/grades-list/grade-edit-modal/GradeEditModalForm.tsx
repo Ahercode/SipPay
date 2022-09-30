@@ -232,9 +232,9 @@ const GradeEditModalForm: FC<Props> = ({grade, isGradeLoading}) => {
               disabled={formik.isSubmitting || isGradeLoading}
             />
             {/* end::Input */}
-            {formik.touched.email && formik.errors.email && (
+            {formik.touched.description && formik.errors.description && (
               <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
+                <span role='alert'>{formik.errors.description}</span>
               </div>
             )}
           </div>

@@ -1,20 +1,20 @@
 import {FC, useState} from 'react'
 import * as Yup from 'yup'
 import {useFormik} from 'formik'
-import {isNotEmpty, toAbsoluteUrl} from '../../../../../../_metronic/helpers'
-import {initialBank, Bank} from '../core/_models'
+import {isNotEmpty, toAbsoluteUrl} from '../../../../../../../../_metronic/helpers'
+import {initialApproval, Approval} from '../core/_models'
 import clsx from 'clsx'
 import {useListView} from '../core/ListViewProvider'
-import {BanksListLoading} from '../components/loading/BanksListLoading'
-import {createBank, updateBank} from '../core/_requests'
+import {ApprovalsListLoading} from '../components/loading/ApprovalsListLoading'
+import {createApproval, updateApproval} from '../core/_requests'
 import {useQueryResponse} from '../core/QueryResponseProvider'
 
 type Props = {
-  isBankLoading: boolean
-  bank: Bank
+  isApprovalLoading: boolean
+  approval: Approval
 }
 
-const editBankSchema = Yup.object().shape({
+const editApprovalSchema = Yup.object().shape({
   email: Yup.string()
     .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
@@ -26,17 +26,17 @@ const editBankSchema = Yup.object().shape({
     .required('Name is required'),
 })
 
-const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
+const ApprovalEditModalForm: FC<Props> = ({approval, isApprovalLoading}) => {
   const {setItemIdForUpdate} = useListView()
   const {refetch} = useQueryResponse()
 
-  const [bankForEdit] = useState<Bank>({
-    ...bank,
-    // avatar: bank.avatar || initialBank.avatar,
-    role: bank.role || initialBank.role,
-    position: bank.position || initialBank.position,
-    name: bank.name || initialBank.name,
-    email: bank.email || initialBank.email,
+  const [approvalForEdit] = useState<Approval>({
+    ...approval,
+    // avatar: Approval.avatar || initialApproval.avatar,
+    role: approval.role || initialApproval.role,
+    position: approval.position || initialApproval.position,
+    name: approval.name || initialApproval.name,
+    email: approval.email || initialApproval.email,
   })
 
   const cancel = (withRefresh?: boolean) => {
@@ -46,19 +46,19 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
     setItemIdForUpdate(undefined)
   }
 
-  const blankImg = toAbsoluteUrl('/media/svg/avatars/blank.svg')
-  const bankAvatarImg = toAbsoluteUrl(`/media/${bankForEdit.avatar}`)
+  // const blankImg = toAbsoluteUrl('/media/svg/avatars/blank.svg')
+  // const ApprovalAvatarImg = toAbsoluteUrl(`/media/${ApprovalForEdit.avatar}`)
 
   const formik = useFormik({
-    initialValues: bankForEdit,
-    validationSchema: editBankSchema,
+    initialValues: approvalForEdit,
+    validationSchema: editApprovalSchema,
     onSubmit: async (values, {setSubmitting}) => {
       setSubmitting(true)
       try {
         if (isNotEmpty(values.id)) {
-          await updateBank(values)
+          await updateApproval(values)
         } else {
-          await createBank(values)
+          await createApproval(values)
         }
       } catch (ex) {
         console.error(ex)
@@ -71,7 +71,7 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
 
   return (
     <>
-      <form id='kt_modal_add_bank_form' className='form' onSubmit={formik.handleSubmit} noValidate>
+      <form id='kt_modal_add_Approval_form' className='form' onSubmit={formik.handleSubmit} noValidate>
         {/* begin::Scroll */}
         <div
           className='d-flex flex-column scroll-y me-n7 pe-7'
@@ -98,7 +98,7 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
               {/* begin::Preview existing avatar */}
               {/* <div
                 className='image-input-wrapper w-125px h-125px'
-                style={{backgroundImage: `url('${bankAvatarImg}')`}}
+                style={{backgroundImage: `url('${ApprovalAvatarImg}')`}}
               ></div> */}
               {/* end::Preview existing avatar */}
 
@@ -149,7 +149,7 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Full Name</label>
+            <label className='required fw-bold fs-6 mb-2'>Name</label>
             {/* end::Label */}
 
             {/* begin::Input */}
@@ -166,7 +166,7 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
                 }
               )}
               autoComplete='off'
-              disabled={formik.isSubmitting || isBankLoading}
+              disabled={formik.isSubmitting || isApprovalLoading}
             />
             {formik.touched.name && formik.errors.name && (
               <div className='fv-plugins-message-container'>
@@ -199,7 +199,7 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
               type='email'
               name='email'
               autoComplete='off'
-              disabled={formik.isSubmitting || isBankLoading}
+              disabled={formik.isSubmitting || isApprovalLoading}
             />
             {/* end::Input */}
             {formik.touched.email && formik.errors.email && (
@@ -377,7 +377,7 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
             onClick={() => cancel()}
             className='btn btn-light me-3'
             data-kt-users-modal-action='cancel'
-            disabled={formik.isSubmitting || isBankLoading}
+            disabled={formik.isSubmitting || isApprovalLoading}
           >
             Discard
           </button>
@@ -386,10 +386,10 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
             type='submit'
             className='btn btn-primary'
             data-kt-users-modal-action='submit'
-            disabled={isBankLoading || formik.isSubmitting || !formik.isValid || !formik.touched}
+            disabled={isApprovalLoading || formik.isSubmitting || !formik.isValid || !formik.touched}
           >
             <span className='indicator-label'>Submit</span>
-            {(formik.isSubmitting || isBankLoading) && (
+            {(formik.isSubmitting || isApprovalLoading) && (
               <span className='indicator-progress'>
                 Please wait...{' '}
                 <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
@@ -399,9 +399,9 @@ const BankEditModalForm: FC<Props> = ({bank, isBankLoading}) => {
         </div>
         {/* end::Actions */}
       </form>
-      {(formik.isSubmitting || isBankLoading) && <BanksListLoading />}
+      {(formik.isSubmitting || isApprovalLoading) && <ApprovalsListLoading />}
     </>
   )
 }
 
-export {BankEditModalForm}
+export {ApprovalEditModalForm}

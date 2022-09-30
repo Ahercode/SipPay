@@ -1,19 +1,19 @@
 import {useQueryClient, useMutation} from 'react-query'
-import {QUERIES} from '../../../../../../../_metronic/helpers'
+import {QUERIES} from '../../../../../../../../../_metronic/helpers'
 import {useListView} from '../../core/ListViewProvider'
 import {useQueryResponse} from '../../core/QueryResponseProvider'
-import {deleteSelectedBanks} from '../../core/_requests'
+import {deleteSelectedApprovals} from '../../core/_requests'
 
-const BanksListGrouping = () => {
+const ApprovalsListGrouping = () => {
   const {selected, clearSelected} = useListView()
   const queryClient = useQueryClient()
   const {query} = useQueryResponse()
 
-  const deleteSelectedItems = useMutation(() => deleteSelectedBanks(selected), {
+  const deleteSelectedItems = useMutation(() => deleteSelectedApprovals(selected), {
     // 💡 response of the mutation is passed to onSuccess
     onSuccess: () => {
       // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.BANKS_LIST}-${query}`])
+      queryClient.invalidateQueries([`${QUERIES.APPROVALS_LIST}-${query}`])
       clearSelected()
     },
   })
@@ -35,4 +35,4 @@ const BanksListGrouping = () => {
   )
 }
 
-export {BanksListGrouping}
+export {ApprovalsListGrouping}

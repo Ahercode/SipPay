@@ -1,11 +1,11 @@
 import {Route, Routes, Outlet, Navigate} from 'react-router-dom'
-import {PageLink, PageTitle} from '../../../../_metronic/layout/core'
-import {BanksListWrapper} from './banks-list/BanksList'
+import {PageLink, PageTitle} from '../../../../../../_metronic/layout/core'
+import {ApprovalsListWrapper} from './approvals-list/ApprovalsList'
 
-const banksBreadcrumbs: Array<PageLink> = [
+const ApprovalsBreadcrumbs: Array<PageLink> = [
   {
-    title: 'Banks',
-    path: '/apps/bank/banks',
+    title: 'Approvals',
+    path: '/apps/approval/approvals',
     isSeparator: false,
     isActive: false,
   },
@@ -17,23 +17,23 @@ const banksBreadcrumbs: Array<PageLink> = [
   },
 ]
 
-const BanksPage = () => {
+const ApprovalsPage = () => {
   return (
     <Routes>
       <Route element={<Outlet />}>
         <Route
-          path='banks'
+          path='approvals'
           element={
             <>
-              <PageTitle breadcrumbs={banksBreadcrumbs}>All Bank</PageTitle>
-              <BanksListWrapper />
+              <PageTitle breadcrumbs={ApprovalsBreadcrumbs}>All Approval</PageTitle>
+              <ApprovalsListWrapper />
             </>
           }
         />
       </Route>
-      <Route index element={<Navigate to='/apps/bank/banks' />} />
+      <Route index element={<Navigate to='/apps/approval/approvals' />} />
     </Routes>
   )
 }
 
-export default BanksPage
+export default ApprovalsPage

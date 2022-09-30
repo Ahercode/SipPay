@@ -1,8 +1,8 @@
 import {useEffect} from 'react'
-import {BankEditModalHeader} from './BankEditModalHeader'
-import {BankEditModalFormWrapper} from './BankEditModalFormWrapper'
+import {ApprovalEditModalHeader} from './ApprovalEditModalHeader'
+import {ApprovalEditModalFormWrapper} from './ApprovalEditModalFormWrapper'
 
-const BankEditModal = () => {
+const ApprovalEditModal = () => {
   useEffect(() => {
     document.body.classList.add('modal-open')
     return () => {
@@ -14,7 +14,7 @@ const BankEditModal = () => {
     <>
       <div
         className='modal fade show d-block'
-        id='kt_modal_add_bank'
+        id='kt_modal_add_Approval'
         role='dialog'
         tabIndex={-1}
         aria-modal='true'
@@ -23,10 +23,10 @@ const BankEditModal = () => {
         <div className='modal-dialog modal-dialog-centered mw-650px'>
           {/* begin::Modal content */}
           <div className='modal-content'>
-            <BankEditModalHeader />
+            <ApprovalEditModalHeader />
             {/* begin::Modal body */}
             <div className='modal-body scroll-y mx-5 mx-xl-15 my-7'>
-              <BankEditModalFormWrapper />
+              <ApprovalEditModalFormWrapper />
             </div>
             {/* end::Modal body */}
           </div>
@@ -41,4 +41,4 @@ const BankEditModal = () => {
   )
 }
 
-export {BankEditModal}
+export {ApprovalEditModal}

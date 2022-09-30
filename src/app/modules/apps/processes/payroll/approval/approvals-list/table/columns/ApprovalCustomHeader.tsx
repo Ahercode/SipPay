@@ -1,16 +1,16 @@
 import clsx from 'clsx'
 import {FC, PropsWithChildren, useMemo} from 'react'
 import {HeaderProps} from 'react-table'
-import {initialQueryState} from '../../../../../../../_metronic/helpers'
+import {initialQueryState} from '../../../../../../../../../_metronic/helpers'
 import {useQueryRequest} from '../../core/QueryRequestProvider'
-import {Bank} from '../../core/_models'
+import {Approval} from '../../core/_models'
 
 type Props = {
   className?: string
   title?: string
-  tableProps: PropsWithChildren<HeaderProps<Bank>>
+  tableProps: PropsWithChildren<HeaderProps<Approval>>
 }
-const BankCustomHeader: FC<Props> = ({className, title, tableProps}) => {
+const ApprovalCustomHeader: FC<Props> = ({className, title, tableProps}) => {
   const id = tableProps.column.id
   const {state, updateState} = useQueryRequest()
 
@@ -58,4 +58,4 @@ const BankCustomHeader: FC<Props> = ({className, title, tableProps}) => {
   )
 }
 
-export {BankCustomHeader}
+export {ApprovalCustomHeader}

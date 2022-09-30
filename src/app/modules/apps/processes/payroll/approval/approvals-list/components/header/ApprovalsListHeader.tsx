@@ -1,17 +1,17 @@
 import {useListView} from '../../core/ListViewProvider'
-import {BanksListToolbar} from './BankListToolbar'
-import {BanksListGrouping} from './BanksListGrouping'
-import {BanksListSearchComponent} from './BanksListSearchComponent'
+import {ApprovalsListToolbar} from './ApprovalListToolbar'
+import {ApprovalsListGrouping} from './ApprovalsListGrouping'
+import {ApprovalsListSearchComponent} from './ApprovalsListSearchComponent'
 
-const BanksListHeader = () => {
+const ApprovalsListHeader = () => {
   const {selected} = useListView()
   return (
     <div className='card-header border-0 pt-6'>
-      <BanksListSearchComponent />
+      <ApprovalsListSearchComponent />
       {/* begin::Card toolbar */}
       <div className='card-toolbar'>
         {/* begin::Group actions */}
-        {selected.length > 0 ? <BanksListGrouping /> : <BanksListToolbar />}
+        {selected.length > 0 ? <ApprovalsListGrouping /> : <ApprovalsListToolbar />}
         {/* end::Group actions */}
       </div>
       {/* end::Card toolbar */}
@@ -19,4 +19,4 @@ const BanksListHeader = () => {
   )
 }
 
-export {BanksListHeader}
+export {ApprovalsListHeader}

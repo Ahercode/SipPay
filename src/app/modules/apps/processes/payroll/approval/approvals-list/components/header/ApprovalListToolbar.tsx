@@ -1,16 +1,16 @@
-import {KTSVG} from '../../../../../../../_metronic/helpers'
+import {KTSVG} from '../../../../../../../../../_metronic/helpers'
 import {useListView} from '../../core/ListViewProvider'
 // import {UsersListFilter} from './UsersListFilter'
 
-const BanksListToolbar = () => {
+const ApprovalsListToolbar = () => {
   const {setItemIdForUpdate} = useListView()
-  const openAddBankModal = () => {
+  const openAddApprovalModal = () => {
     setItemIdForUpdate(null)
   }
 
   return (
     <div className='d-flex justify-content-end' data-kt-User-table-toolbar='base'>
-      {/* <BanksListFilter /> */}
+      {/* <ApprovalsListFilter /> */}
 
       {/* begin::Export */}
       <button type='button' className='btn btn-light-primary me-3'>
@@ -19,14 +19,14 @@ const BanksListToolbar = () => {
       </button>
       {/* end::Export */}
 
-      {/* begin::Add Bank */}
-      <button type='button' className='btn btn-primary' onClick={openAddBankModal}>
+      {/* begin::Add Approval */}
+      <button type='button' className='btn btn-primary' onClick={openAddApprovalModal}>
         <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-        Add Bank
+        Add Approval
       </button>
       {/* end::Add user */}
     </div>
   )
 }
 
-export {BanksListToolbar}
+export {ApprovalsListToolbar}

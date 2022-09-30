@@ -149,7 +149,7 @@ const DivisionEditModalForm: FC<Props> = ({division, isDivisionLoading}) => {
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Full Name</label>
+            <label className='required fw-bold fs-6 mb-2'>Name</label>
             {/* end::Label */}
 
             {/* begin::Input */}
@@ -182,7 +182,7 @@ const DivisionEditModalForm: FC<Props> = ({division, isDivisionLoading}) => {
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Email</label>
+            <label className='required fw-bold fs-6 mb-2'>Code</label>
             {/* end::Label */}
 
             {/* begin::Input */}

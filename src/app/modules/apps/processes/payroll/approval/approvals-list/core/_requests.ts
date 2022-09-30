@@ -1,45 +1,45 @@
 import axios, {AxiosResponse} from 'axios'
-import {ID, Response} from '../../../../../../_metronic/helpers'
-import {Bank, BanksQueryResponse} from './_models'
+import {ID, Response} from '../../../../../../../../_metronic/helpers'
+import {Approval, ApprovalsQueryResponse} from './_models'
 
 const API_URL = process.env.REACT_APP_THEME_API_URL
-const BANK_URL = `${API_URL}/user`
-const GET_BANKS_URL = `${API_URL}/users/query`
+const APPROVAL_URL = `${API_URL}/user`
+const GET_APPROVALS_URL = `${API_URL}/users/query`
 
-const getBanks = (query: string): Promise<BanksQueryResponse> => {
+const getApprovals = (query: string): Promise<ApprovalsQueryResponse> => {
   return axios
-    .get(`${GET_BANKS_URL}?${query}`)
-    .then((d: AxiosResponse<BanksQueryResponse>) => d.data)
+    .get(`${GET_APPROVALS_URL}?${query}`)
+    .then((d: AxiosResponse<ApprovalsQueryResponse>) => d.data)
 }
 
-const getBankById = (id: ID): Promise<Bank | undefined> => {
+const getApprovalById = (id: ID): Promise<Approval | undefined> => {
   return axios
-    .get(`${BANK_URL}/${id}`)
-    .then((response: AxiosResponse<Response<Bank>>) => response.data)
-    .then((response: Response<Bank>) => response.data)
+    .get(`${APPROVAL_URL}/${id}`)
+    .then((response: AxiosResponse<Response<Approval>>) => response.data)
+    .then((response: Response<Approval>) => response.data)
 }
 
-const createBank = (bank: Bank): Promise<Bank | undefined> => {
+const createApproval = (approval: Approval): Promise<Approval | undefined> => {
   return axios
-    .put(BANK_URL, bank)
-    .then((response: AxiosResponse<Response<Bank>>) => response.data)
-    .then((response: Response<Bank>) => response.data)
+    .put(APPROVAL_URL, approval)
+    .then((response: AxiosResponse<Response<Approval>>) => response.data)
+    .then((response: Response<Approval>) => response.data)
 }
 
-const updateBank = (bank: Bank): Promise<Bank | undefined> => {
+const updateApproval = (approval: Approval): Promise<Approval | undefined> => {
   return axios
-    .post(`${BANK_URL}/${bank.id}`, bank)
-    .then((response: AxiosResponse<Response<Bank>>) => response.data)
-    .then((response: Response<Bank>) => response.data)
+    .post(`${APPROVAL_URL}/${approval.id}`, approval)
+    .then((response: AxiosResponse<Response<Approval>>) => response.data)
+    .then((response: Response<Approval>) => response.data)
 }
 
-const deleteBank = (bankId: ID): Promise<void> => {
-  return axios.delete(`${BANK_URL}/${bankId}`).then(() => {})
+const deleteApproval = (approvalId: ID): Promise<void> => {
+  return axios.delete(`${APPROVAL_URL}/${approvalId}`).then(() => {})
 }
 
-const deleteSelectedBanks = (bankIds: Array<ID>): Promise<void> => {
-  const requests = bankIds.map((id) => axios.delete(`${BANK_URL}/${id}`))
+const deleteSelectedApprovals = (approvalIds: Array<ID>): Promise<void> => {
+  const requests = approvalIds.map((id) => axios.delete(`${APPROVAL_URL}/${id}`))
   return axios.all(requests).then(() => {})
 }
 
-export {getBanks, deleteBank, deleteSelectedBanks, getBankById, createBank, updateBank}
+export {getApprovals, deleteApproval, deleteSelectedApprovals, getApprovalById, createApproval, updateApproval}

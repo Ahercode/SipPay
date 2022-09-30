@@ -2,10 +2,10 @@
 import clsx from 'clsx'
 import {FC} from 'react'
 import {Row} from 'react-table'
-import {Bank} from '../../core/_models'
+import {Approval} from '../../core/_models'
 
 type Props = {
-  row: Row<Bank>
+  row: Row<Approval>
 }
 
 const CustomRow: FC<Props> = ({row}) => (

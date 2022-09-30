@@ -4,8 +4,8 @@ type Props = {
   two_steps?: boolean
 }
 
-const BankTwoStepsCell: FC<Props> = ({two_steps}) => (
+const ApprovalTwoStepsCell: FC<Props> = ({two_steps}) => (
   <> {two_steps && <div className='badge badge-light-success fw-bolder'>Enabled</div>}</>
 )
 
-export {BankTwoStepsCell}
+export {ApprovalTwoStepsCell}

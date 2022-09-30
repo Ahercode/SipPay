@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useState, useEffect} from 'react'
-import {initialQueryState, KTSVG, useDebounce} from '../../../../../../../_metronic/helpers'
+import {initialQueryState, KTSVG, useDebounce} from '../../../../../../../../../_metronic/helpers'
 import {useQueryRequest} from '../../core/QueryRequestProvider'
 
-const BanksListSearchComponent = () => {
+const ApprovalsListSearchComponent = () => {
   const {updateState} = useQueryRequest()
   const [searchTerm, setSearchTerm] = useState<string>('')
   // Debounce search term so that it only gives us latest value ...
   // ... if searchTerm has not been updated within last 500ms.
-  // The goal is to only have the API call fire when Bank stops typing ...
+  // The goal is to only have the API call fire when Approval stops typing ...
   // ... so that we aren't hitting our API rapidly.
   const debouncedSearchTerm = useDebounce(searchTerm, 150)
   // Effect for API call
@@ -32,7 +32,7 @@ const BanksListSearchComponent = () => {
         />
         <input
           type='text'
-          data-kt-bank-table-filter='search'
+          data-kt-approval-table-filter='search'
           className='form-control form-control-solid w-250px ps-14'
           placeholder='Search...'
           value={searchTerm}
@@ -44,4 +44,4 @@ const BanksListSearchComponent = () => {
   )
 }
 
-export {BanksListSearchComponent}
+export {ApprovalsListSearchComponent}

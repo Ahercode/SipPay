@@ -9,12 +9,12 @@ import {
   QUERIES,
   stringifyRequestQuery,
   WithChildren,
-} from '../../../../../../_metronic/helpers'
-import {getBanks} from './_requests'
-import {Bank} from './_models'
+} from '../../../../../../../../_metronic/helpers'
+import {getApprovals} from './_requests'
+import {Approval} from './_models'
 import {useQueryRequest} from './QueryRequestProvider'
 
-const QueryResponseContext = createResponseContext<Bank>(initialQueryResponse)
+const QueryResponseContext = createResponseContext<Approval>(initialQueryResponse)
 const QueryResponseProvider: FC<WithChildren> = ({children}) => {
   const {state} = useQueryRequest()
   const [query, setQuery] = useState<string>(stringifyRequestQuery(state))
@@ -33,7 +33,7 @@ const QueryResponseProvider: FC<WithChildren> = ({children}) => {
   } = useQuery(
     `${QUERIES.USERS_LIST}-${query}`,
     () => {
-      return getBanks(query)
+      return getApprovals(query)
     },
     {cacheTime: 0, keepPreviousData: true, refetchOnWindowFocus: false}
   )

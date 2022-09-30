@@ -1,12 +1,12 @@
 import {FC, useMemo} from 'react'
-import {ID} from '../../../../../../../_metronic/helpers'
+import {ID} from '../../../../../../../../../_metronic/helpers'
 import {useListView} from '../../core/ListViewProvider'
 
 type Props = {
   id: ID
 }
 
-const BankSelectionCell: FC<Props> = ({id}) => {
+const ApprovalSelectionCell: FC<Props> = ({id}) => {
   const {selected, onSelect} = useListView()
   const isSelected = useMemo(() => selected.includes(id), [id, selected])
   return (
@@ -15,7 +15,7 @@ const BankSelectionCell: FC<Props> = ({id}) => {
         className='form-check-input'
         type='checkbox'
         data-kt-check={isSelected}
-        data-kt-check-target='#kt_table_banks .form-check-input'
+        data-kt-check-target='#kt_table_approvals .form-check-input'
         checked={isSelected}
         onChange={() => onSelect(id)}
       />
@@ -23,4 +23,4 @@ const BankSelectionCell: FC<Props> = ({id}) => {
   )
 }
 
-export {BankSelectionCell}
+export {ApprovalSelectionCell}

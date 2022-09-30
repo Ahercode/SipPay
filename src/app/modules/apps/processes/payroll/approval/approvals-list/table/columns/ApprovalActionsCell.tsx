@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {FC, useEffect} from 'react'
 import {useMutation, useQueryClient} from 'react-query'
-import {MenuComponent} from '../../../../../../../_metronic/assets/ts/components'
-import {ID, KTSVG, QUERIES} from '../../../../../../../_metronic/helpers'
+import {MenuComponent} from '../../../../../../../../../_metronic/assets/ts/components'
+import {ID, KTSVG, QUERIES} from '../../../../../../../../../_metronic/helpers'
 import {useListView} from '../../core/ListViewProvider'
 import {useQueryResponse} from '../../core/QueryResponseProvider'
-import {deleteBank} from '../../core/_requests'
+import {deleteApproval} from '../../core/_requests'
 
 type Props = {
   id: ID
 }
 
-const BankActionsCell: FC<Props> = ({id}) => {
+const ApprovalActionsCell: FC<Props> = ({id}) => {
   const {setItemIdForUpdate} = useListView()
   const {query} = useQueryResponse()
   const queryClient = useQueryClient()
@@ -24,11 +24,11 @@ const BankActionsCell: FC<Props> = ({id}) => {
     setItemIdForUpdate(id)
   }
 
-  const deleteItem = useMutation(() => deleteBank(id), {
+  const deleteItem = useMutation(() => deleteApproval(id), {
     // 💡 response of the mutation is passed to onSuccess
     onSuccess: () => {
       // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.BANKS_LIST}-${query}`])
+      queryClient.invalidateQueries([`${QUERIES.APPROVALS_LIST}-${query}`])
     },
   })
 
@@ -60,7 +60,7 @@ const BankActionsCell: FC<Props> = ({id}) => {
         <div className='menu-item px-3'>
           <a
             className='menu-link px-3'
-            data-kt-Banks-table-filter='delete_row'
+            data-kt-approvals-table-filter='delete_row'
             onClick={async () => await deleteItem.mutateAsync()}
           >
             Delete
@@ -73,4 +73,4 @@ const BankActionsCell: FC<Props> = ({id}) => {
   )
 }
 
-export {BankActionsCell}
+export {ApprovalActionsCell}

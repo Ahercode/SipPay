@@ -1,20 +1,20 @@
 import {useQuery} from 'react-query'
-import {BankEditModalForm} from './BankEditModalForm'
-import {isNotEmpty, QUERIES} from '../../../../../../_metronic/helpers'
+import {ApprovalEditModalForm} from './ApprovalEditModalForm'
+import {isNotEmpty, QUERIES} from '../../../../../../../../_metronic/helpers'
 import {useListView} from '../core/ListViewProvider'
-import {getBankById} from '../core/_requests'
+import {getApprovalById} from '../core/_requests'
 
-const BankEditModalFormWrapper = () => {
+const ApprovalEditModalFormWrapper = () => {
   const {itemIdForUpdate, setItemIdForUpdate} = useListView()
   const enabledQuery: boolean = isNotEmpty(itemIdForUpdate)
   const {
     isLoading,
-    data: bank,
+    data: approval,
     error,
   } = useQuery(
-    `${QUERIES.BANKS_LIST}-user-${itemIdForUpdate}`,
+    `${QUERIES.APPROVALS_LIST}-user-${itemIdForUpdate}`,
     () => {
-      return getBankById(itemIdForUpdate)
+      return getApprovalById(itemIdForUpdate)
     },
     {
       cacheTime: 0,
@@ -27,14 +27,14 @@ const BankEditModalFormWrapper = () => {
   )
 
   if (!itemIdForUpdate) {
-    return <BankEditModalForm isBankLoading={isLoading} bank={{id: undefined}} />
+    return <ApprovalEditModalForm isApprovalLoading={isLoading} approval={{id: undefined}} />
   }
 
-  if (!isLoading && !error && bank) {
-    return <BankEditModalForm isBankLoading={isLoading} bank={bank} />
+  if (!isLoading && !error && approval) {
+    return <ApprovalEditModalForm isApprovalLoading={isLoading} approval={approval} />
   }
 
   return null
 }
 
-export {BankEditModalFormWrapper}
+export {ApprovalEditModalFormWrapper}
