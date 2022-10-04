@@ -25,11 +25,7 @@ const initialValues = {
   password: 'demo',
 }
 
-/*
-  Formik+YUP+Typescript:
-  https://jaredpalmer.com/formik/docs/tutorial#getfieldprops
-  https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
-*/
+
 
 export function Login() {
   const [loading, setLoading] = useState(false)
@@ -64,17 +60,17 @@ export function Login() {
     >
       {/* begin::Heading */}
       <div className='text-center mb-10'>
-        <h1 className='text-dark mb-3'>Sign In to SipPay</h1>
-        <div className='text-gray-400 fw-bold fs-4'>
+        <h1 className='text-dark mb-3'>ENP HR login</h1>
+        {/* <div className='text-gray-400 fw-bold fs-4'>
           New Here?{' '}
           <Link to='/auth/registration' className='link-primary fw-bolder'>
             Create an Account
           </Link>
-        </div>
+        </div> */}
       </div>
       {/* begin::Heading */}
 
-      {formik.status ? (
+      {/* {formik.status ? (
         <div className='mb-lg-15 alert alert-danger'>
           <div className='alert-text font-weight-bold'>{formik.status}</div>
         </div>
@@ -85,7 +81,7 @@ export function Login() {
             continue.
           </div>
         </div>
-      )}
+      )} */}
 
       {/* begin::Form group */}
       <div className='fv-row mb-10'>
@@ -120,13 +116,7 @@ export function Login() {
             <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
             {/* end::Label */}
             {/* begin::Link */}
-            <Link
-              to='/auth/forgot-password'
-              className='link-primary fs-6 fw-bolder'
-              style={{marginLeft: '5px'}}
-            >
-              Forgot Password ?
-            </Link>
+            
             {/* end::Link */}
           </div>
         </div>
@@ -152,6 +142,13 @@ export function Login() {
             </div>
           </div>
         )}
+        <Link
+              to='/auth/forgot-password'
+              className='link-primary fs-6 fw-bolder'
+              style={{marginLeft: '5px'}}
+            >
+              Forgot Password ?
+            </Link>
       </div>
       <div className='fv-row mb-7'>
             {/* begin::Label */}

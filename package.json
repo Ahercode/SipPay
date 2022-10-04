@@ -2,7 +2,7 @@
     "name": "demo1",
     "version": "8.1.0",
     "private": true,
-    "homepage": "http://localhost/sippay",
+    "homepage": "http://208.117.44.15/EnpPay",
 
     "dependencies": {
         "@formatjs/intl-pluralrules": "4.3.3",

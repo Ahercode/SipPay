@@ -20,10 +20,16 @@ const UsersListToolbar = () => {
       {/* end::Export */}
 
       {/* begin::Add user */}
-      <button type='button' className='btn btn-primary' onClick={openAddUserModal}>
+      {/* <button type='button' className='btn btn-primary' onClick={openAddUserModal}>
         <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
         Add Employee
-      </button>
+      </button> */}
+      <a href='./userform/components/horizontal'>
+        <button type='button' className='btn btn-primary'  >
+          <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
+          Add Employee
+        </button>
+      </a>
       {/* end::Add user */}
     </div>
   )

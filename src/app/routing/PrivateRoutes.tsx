@@ -41,6 +41,7 @@ import PeriodsPage from '../modules/apps/setups/payroll/period/PeriodsPage'
 import SavingSchemesPage from '../modules/apps/setups/payroll/saving-scheme/SavingSchemesPage'
 import TaxsPage from '../modules/apps/setups/payroll/tax/TaxsPage'
 import ApprovalLevelsPage from '../modules/apps/setups/payroll/approval-level/ApprovalLevelsPage'
+import { Horizontal } from '../modules/wizards/components/Horizontal'
 
 
 const PrivateRoutes = () => {
@@ -75,6 +76,7 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
+        
         <Route
           path='crafted/pages/wizards/*'
           element={
@@ -177,6 +179,14 @@ const PrivateRoutes = () => {
           element={
             <SuspensedView>
               <UsersPage />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='apps/user-management/userform/components/*'
+          element={
+            <SuspensedView>
+              <Horizontal />
             </SuspensedView>
           }
         />
