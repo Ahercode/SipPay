@@ -34,7 +34,7 @@ const ApprovalLevelInfoCell: FC<Props> = ({approvalLevel}) => (
       <a href='#' className='text-gray-800 text-hover-primary mb-1'>
         {approvalLevel.name}
       </a>
-      <span>{approvalLevel.email}</span>
+      {/* <span>{approvalLevel.email}</span> */}
     </div>
   </div>
 )

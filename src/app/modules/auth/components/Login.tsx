@@ -160,11 +160,12 @@ export function Login() {
                'form-control form-control-solid mb-3 mb-lg-0',
                
              )}>
-             <option value="active">Company 1</option>
-             <option value="inactive">Company 2</option>
-             <option value="inactive">Company 3</option>
-             <option value="inactive">Company 4</option>
-             <option value="inactive">Company 5</option>
+             <option value="active">Engineers and Planners - DAMANG DIVISION</option>
+             <option value="inactive">Engineers and Planners - DZATA DIVISION</option>
+             <option value="inactive">Engineers and Planners - MPOHOR DIVISION</option>
+             <option value="inactive">Engineers and Planners - HEAD OFFICE</option>
+             <option value="inactive">Engineers and Planners - SALAGA DIVISION</option>
+             <option value="inactive">Engineers and Planners - TARKWA DIVISION</option>
              
            </select>
            

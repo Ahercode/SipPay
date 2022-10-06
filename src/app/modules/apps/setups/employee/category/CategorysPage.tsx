@@ -25,7 +25,7 @@ const CategoryPage = () => {
           path='categorys'
           element={
             <>
-              <PageTitle breadcrumbs={categoryBreadcrumbs}>All Bank</PageTitle>
+              <PageTitle breadcrumbs={categoryBreadcrumbs}>All Category</PageTitle>
               <CategoryListWrapper />
             </>
           }

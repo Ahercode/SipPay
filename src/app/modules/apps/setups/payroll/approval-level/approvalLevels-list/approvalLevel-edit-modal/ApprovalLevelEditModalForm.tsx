@@ -15,7 +15,7 @@ type Props = {
 }
 
 const editApprovalLevelSchema = Yup.object().shape({
-  email: Yup.string()
+  level: Yup.string()
     .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
@@ -33,10 +33,10 @@ const ApprovalLevelEditModalForm: FC<Props> = ({approvalLevel, isApprovalLevelLo
   const [ApprovalLevelForEdit] = useState<ApprovalLevel>({
     ...approvalLevel,
     // avatar: ApprovalLevel.avatar || initialApprovalLevel.avatar,
-    role: approvalLevel.role || initialApprovalLevel.role,
-    position: approvalLevel.position || initialApprovalLevel.position,
+    level: approvalLevel.level || initialApprovalLevel.level,
+    status: approvalLevel.status || initialApprovalLevel.status,
     name: approvalLevel.name || initialApprovalLevel.name,
-    email: approvalLevel.email || initialApprovalLevel.email,
+    // email: approvalLevel.email || initialApprovalLevel.email,
   })
 
   const cancel = (withRefresh?: boolean) => {
@@ -149,12 +149,12 @@ const ApprovalLevelEditModalForm: FC<Props> = ({approvalLevel, isApprovalLevelLo
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Full Name</label>
+            <label className='required fw-bold fs-6 mb-2'>Name</label>
             {/* end::Label */}
 
             {/* begin::Input */}
             <input
-              placeholder='Full name'
+              placeholder='name'
               {...formik.getFieldProps('name')}
               type='text'
               name='name'
@@ -182,32 +182,53 @@ const ApprovalLevelEditModalForm: FC<Props> = ({approvalLevel, isApprovalLevelLo
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Email</label>
+            <label className='required fw-bold fs-6 mb-2'>Level</label>
             {/* end::Label */}
 
             {/* begin::Input */}
             <input
-              placeholder='Email'
-              {...formik.getFieldProps('email')}
+              placeholder='level'
+              {...formik.getFieldProps('level')}
               className={clsx(
                 'form-control form-control-solid mb-3 mb-lg-0',
-                {'is-invalid': formik.touched.email && formik.errors.email},
+                {'is-invalid': formik.touched.level && formik.errors.level},
                 {
-                  'is-valid': formik.touched.email && !formik.errors.email,
+                  'is-valid': formik.touched.level && !formik.errors.level,
                 }
               )}
-              type='email'
-              name='email'
+              type='level'
+              name='level'
               autoComplete='off'
               disabled={formik.isSubmitting || isApprovalLevelLoading}
             />
             {/* end::Input */}
-            {formik.touched.email && formik.errors.email && (
+            {formik.touched.level && formik.errors.level && (
               <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
+                <span role='alert'>{formik.errors.level}</span>
               </div>
             )}
           </div>
+          <div className='fv-row mb-7'>
+           {/* begin::Label */}
+           <label className='required fw-bold fs-6 mb-2'>Status</label>
+           <select name="status" id="cars" className={clsx(
+               'form-control form-control-solid mb-3 mb-lg-0',
+               {'is-invalid': formik.touched.status && formik.errors.status},
+               {
+                 'is-valid': formik.touched.status && !formik.errors.status,
+               }
+             )}>
+             <option value="active">active</option>
+             <option value="inactive">inactive</option>
+             
+           </select>
+           
+           {formik.touched.status && formik.errors.status && (
+             <div className='fv-plugins-message-container'>
+               <span role='alert'>{formik.errors.status}</span>
+             </div>
+           )}
+         </div>
           {/* end::Input group */}
 
           {/* begin::Input group */}

@@ -10,19 +10,19 @@ import {ApprovalLevelSelectionHeader} from './ApprovalLevelSelectionHeader'
 import {ApprovalLevel} from '../../core/_models'
 
 const approvalLevelsColumns: ReadonlyArray<Column<ApprovalLevel>> = [
-  {
-    Header: (props) => <ApprovalLevelSelectionHeader tableProps={props} />,
-    id: 'selection',
-    Cell: ({...props}) => <ApprovalLevelSelectionCell id={props.data[props.row.index].id} />,
-  },
+  // {
+  //   Header: (props) => <ApprovalLevelSelectionHeader tableProps={props} />,
+  //   id: 'selection',
+  //   Cell: ({...props}) => <ApprovalLevelSelectionCell id={props.data[props.row.index].id} />,
+  // },
   {
     Header: (props) => <ApprovalLevelCustomHeader tableProps={props} title='Name' className='min-w-125px' />,
     id: 'name',
     Cell: ({...props}) => <ApprovalLevelInfoCell approvalLevel={props.data[props.row.index]} />,
   },
   {
-    Header: (props) => <ApprovalLevelCustomHeader tableProps={props} title='Role' className='min-w-125px' />,
-    accessor: 'role',
+    Header: (props) => <ApprovalLevelCustomHeader tableProps={props} title='Level' className='min-w-125px' />,
+    accessor: 'level',
   },
   // {
   //   Header: (props) => (
@@ -40,9 +40,9 @@ const approvalLevelsColumns: ReadonlyArray<Column<ApprovalLevel>> = [
   // },
   {
     Header: (props) => (
-      <ApprovalLevelCustomHeader tableProps={props} title='Joined day' className='min-w-125px' />
+      <ApprovalLevelCustomHeader tableProps={props} title='Status' className='min-w-125px' />
     ),
-    accessor: 'joined_day',
+    accessor: 'status',
   },
   {
     Header: (props) => (

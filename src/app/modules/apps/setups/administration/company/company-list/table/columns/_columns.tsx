@@ -10,18 +10,18 @@ import {CompanySelectionHeader} from './CompanySelectionHeader'
 import {Company} from '../../core/_models'
 
 const CompanyColumns: ReadonlyArray<Column<Company>> = [
+  // {
+  //   Header: (props) => <CompanySelectionHeader tableProps={props} />,
+  //   id: 'selection',
+  //   Cell: ({...props}) => <CompanySelectionCell id={props.data[props.row.index].id} />,
+  // },
   {
-    Header: (props) => <CompanySelectionHeader tableProps={props} />,
-    id: 'selection',
-    Cell: ({...props}) => <CompanySelectionCell id={props.data[props.row.index].id} />,
-  },
-  {
-    Header: (props) => <CompanyCustomHeader tableProps={props} title='Name' className='min-w-125px' />,
+    Header: (props) => <CompanyCustomHeader tableProps={props} title='Name' className='min-w-125px border-end' />,
     id: 'name',
     Cell: ({...props}) => <CompanyInfoCell company={props.data[props.row.index]} />,
   },
   {
-    Header: (props) => <CompanyCustomHeader tableProps={props} title='Role' className='min-w-125px' />,
+    Header: (props) => <CompanyCustomHeader tableProps={props} title='Role' className='min-w-125px border-end' />,
     accessor: 'role',
   },
   // {
@@ -46,7 +46,7 @@ const CompanyColumns: ReadonlyArray<Column<Company>> = [
   },
   {
     Header: (props) => (
-      <CompanyCustomHeader tableProps={props} title='Actions' className='text-end min-w-100px' />
+      <CompanyCustomHeader tableProps={props} title='Actions' className='text-center min-w-100px' />
     ),
     id: 'actions',
     Cell: ({...props}) => <CompanyActionsCell id={props.data[props.row.index].id} />,

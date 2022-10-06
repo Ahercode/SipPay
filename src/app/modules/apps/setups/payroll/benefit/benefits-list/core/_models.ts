@@ -6,7 +6,7 @@ export type Benefit = {
   email?: string
   position?: string
   role?: string
-  last_login?: string
+  status?: boolean
   two_steps?: boolean
   joined_day?: string
   online?: boolean
@@ -19,9 +19,8 @@ export type Benefit = {
 export type BenefitsQueryResponse = Response<Array<Benefit>>
 
 export const initialBenefit: Benefit = {
-  avatar: 'avatars/300-6.jpg',
-  position: 'Art Director',
-  role: 'Administrator',
+  
   name: '',
+  status: true,
   email: '',
 }
