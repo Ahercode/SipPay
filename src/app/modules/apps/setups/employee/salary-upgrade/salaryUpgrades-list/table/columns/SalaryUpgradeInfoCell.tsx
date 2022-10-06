@@ -11,7 +11,7 @@ type Props = {
 const SalaryUpgradeInfoCell: FC<Props> = ({salaryUpgrade}) => (
   <div className='d-flex align-items-center'>
     {/* begin:: Avatar */}
-    <div className='symbol symbol-circle symbol-50px overflow-hidden me-3'>
+    {/* <div className='symbol symbol-circle symbol-50px overflow-hidden me-3'>
       <a href='#'>
         {salaryUpgrade.avatar ? (
           <div className='symbol-label'>
@@ -29,12 +29,12 @@ const SalaryUpgradeInfoCell: FC<Props> = ({salaryUpgrade}) => (
           </div>
         )}
       </a>
-    </div>
+    </div> */}
     <div className='d-flex flex-column'>
       <a href='#' className='text-gray-800 text-hover-primary mb-1'>
-        {salaryUpgrade.name}
+        {salaryUpgrade.fname}
       </a>
-      <span>{salaryUpgrade.email}</span>
+      {/* <span>{salaryUpgrade.email}</span> */}
     </div>
   </div>
 )
