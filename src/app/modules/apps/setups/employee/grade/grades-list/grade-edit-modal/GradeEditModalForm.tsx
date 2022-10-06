@@ -15,15 +15,15 @@ type Props = {
 }
 
 const editGradeSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  name: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Name is required'),
+  // email: Yup.string()
+  //   .email('Wrong email format')
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Email is required'),
+  // name: Yup.string()
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Name is required'),
 })
 
 const GradeEditModalForm: FC<Props> = ({grade, isGradeLoading}) => {
@@ -157,7 +157,7 @@ const GradeEditModalForm: FC<Props> = ({grade, isGradeLoading}) => {
               placeholder='code'
               {...formik.getFieldProps('code')}
               type='text'
-              name='name'
+              name='code'
               className={clsx(
                 'form-control form-control-solid mb-3 mb-lg-0',
                 {'is-invalid': formik.touched.code && formik.errors.code},
@@ -217,8 +217,8 @@ const GradeEditModalForm: FC<Props> = ({grade, isGradeLoading}) => {
 
             {/* begin::Input */}
             <input
-              placeholder='Email'
-              {...formik.getFieldProps('email')}
+              placeholder='description'
+              {...formik.getFieldProps('description')}
               className={clsx(
                 'form-control form-control-solid mb-3 mb-lg-0',
                 {'is-invalid': formik.touched.description && formik.errors.description},
@@ -226,8 +226,8 @@ const GradeEditModalForm: FC<Props> = ({grade, isGradeLoading}) => {
                   'is-valid': formik.touched.description && !formik.errors.description,
                 }
               )}
-              type='description'
-              name='email'
+              type='text'
+              name='description'
               autoComplete='off'
               disabled={formik.isSubmitting || isGradeLoading}
             />
@@ -238,165 +238,56 @@ const GradeEditModalForm: FC<Props> = ({grade, isGradeLoading}) => {
               </div>
             )}
           </div>
-          {/* end::Input group */}
-
-          {/* begin::Input group */}
-          {/* <div className='mb-7'> */}
+          <div className='fv-row mb-7'>
             {/* begin::Label */}
-            {/* <label className='required fw-bold fs-6 mb-5'>Role</label> */}
+            <label className='required fw-bold fs-6 mb-2'>Paygroup</label>
             {/* end::Label */}
-            {/* begin::Roles */}
-            {/* begin::Input row */}
-            {/* <div className='d-flex fv-row'> */}
-              {/* begin::Radio */}
-              {/* <div className='form-check form-check-custom form-check-solid'> */}
-                {/* begin::Input */}
-                {/* <input
-                  className='form-check-input me-3'
-                  {...formik.getFieldProps('role')}
-                  name='role'
-                  type='radio'
-                  value='Administrator'
-                  id='kt_modal_update_role_option_0'
-                  checked={formik.values.role === 'Administrator'}
-                  disabled={formik.isSubmitting || isUserLoading}
-                /> */}
 
-                {/* end::Input */}
-                {/* begin::Label */}
-                {/* <label className='form-check-label' htmlFor='kt_modal_update_role_option_0'>
-                  <div className='fw-bolder text-gray-800'>Administrator</div>
-                  <div className='text-gray-600'>
-                    Best for business owners and company administrators
-                  </div>
-                </label> */}
-                {/* end::Label */}
-              {/* </div> */}
-              {/* end::Radio */}
-            {/* </div> */}
-            {/* end::Input row */}
-            {/* <div className='separator separator-dashed my-5'></div> */}
-            {/* begin::Input row */}
-            {/* <div className='d-flex fv-row'> */}
-              {/* begin::Radio */}
-              {/* <div className='form-check form-check-custom form-check-solid'> */}
-                {/* begin::Input */}
-                {/* <input
-                  className='form-check-input me-3'
-                  {...formik.getFieldProps('role')}
-                  name='role'
-                  type='radio'
-                  value='Developer'
-                  id='kt_modal_update_role_option_1'
-                  checked={formik.values.role === 'Developer'}
-                  disabled={formik.isSubmitting || isUserLoading}
-                /> */}
-                {/* end::Input */}
-                {/* begin::Label */}
-                {/* <label className='form-check-label' htmlFor='kt_modal_update_role_option_1'>
-                  <div className='fw-bolder text-gray-800'>Developer</div>
-                  <div className='text-gray-600'>
-                    Best for developers or people primarily using the API
-                  </div> */}
-                {/* </label> */}
-                {/* end::Label */}
-              {/* </div> */}
-              {/* end::Radio */}
-            {/* </div> */}
-            {/* end::Input row */}
-            {/* <div className='separator separator-dashed my-5'></div> */}
-            {/* begin::Input row */}
-            {/* <div className='d-flex fv-row'> */}
-              {/* begin::Radio */}
-              {/* <div className='form-check form-check-custom form-check-solid'> */}
-                {/* begin::Input */}
-                {/* <input
-                  className='form-check-input me-3'
-                  {...formik.getFieldProps('role')}
-                  name='role'
-                  type='radio'
-                  value='Analyst'
-                  id='kt_modal_update_role_option_2'
-                  checked={formik.values.role === 'Analyst'}
-                  disabled={formik.isSubmitting || isUserLoading}
-                /> */}
+            {/* begin::Input */}
+            <select name="paygroup" id="cars" className={clsx(
+               'form-control form-control-solid mb-3 mb-lg-0',
+               {'is-invalid': formik.touched.paygroup && formik.errors.paygroup},
+               {
+                 'is-valid': formik.touched.paygroup && !formik.errors.paygroup,
+               }
+             )}>
+             <option value="active">Active</option>
+             <option value="inactive">Inactive</option>
+             
+           </select>
+            {/* end::Input */}
+            {formik.touched.code && formik.errors.code && (
+              <div className='fv-plugins-message-container'>
+                <span role='alert'>{formik.errors.paygroup}</span>
+              </div>
+            )}
+          </div>
+          <div className='fv-row mb-7'>
+            {/* begin::Label */}
+            <label className='required fw-bold fs-6 mb-2'>Status</label>
+            {/* end::Label */}
 
-                {/* end::Input */}
-                {/* begin::Label */}
-                {/* <label className='form-check-label' htmlFor='kt_modal_update_role_option_2'>
-                  <div className='fw-bolder text-gray-800'>Analyst</div>
-                  <div className='text-gray-600'>
-                    Best for people who need full access to analytics data, but don't need to update
-                    business settings
-                  </div>
-                </label> */}
-                {/* end::Label */}
-              {/* </div> */}
-              {/* end::Radio */}
-            {/* </div> */}
-            {/* end::Input row */}
-            {/* <div className='separator separator-dashed my-5'></div> */}
-            {/* begin::Input row */}
-            {/* <div className='d-flex fv-row'> */}
-              {/* begin::Radio */}
-              {/* <div className='form-check form-check-custom form-check-solid'> */}
-                {/* begin::Input */}
-                {/* <input
-                  className='form-check-input me-3'
-                  {...formik.getFieldProps('role')}
-                  name='role'
-                  type='radio'
-                  value='Support'
-                  id='kt_modal_update_role_option_3'
-                  checked={formik.values.role === 'Support'}
-                  disabled={formik.isSubmitting || isUserLoading}
-                /> */}
-                {/* end::Input */}
-                {/* begin::Label */}
-                {/* <label className='form-check-label' htmlFor='kt_modal_update_role_option_3'>
-                  <div className='fw-bolder text-gray-800'>Support</div>
-                  <div className='text-gray-600'>
-                    Best for employees who regularly refund payments and respond to disputes
-                  </div>
-                </label> */}
-                {/* end::Label */}
-              {/* </div> */}
-              {/* end::Radio */}
-            {/* </div> */}
-            {/* end::Input row */}
-            {/* <div className='separator separator-dashed my-5'></div> */}
-            {/* begin::Input row */}
-            {/* <div className='d-flex fv-row'> */}
-              {/* begin::Radio */}
-              {/* <div className='form-check form-check-custom form-check-solid'> */}
-                {/* begin::Input */}
-                {/* <input
-                  className='form-check-input me-3'
-                  {...formik.getFieldProps('role')}
-                  name='role'
-                  type='radio'
-                  id='kt_modal_update_role_option_4'
-                  value='Trial'
-                  checked={formik.values.role === 'Trial'}
-                  disabled={formik.isSubmitting || isUserLoading}
-                /> */}
-                {/* end::Input */}
-                {/* begin::Label */}
-                {/* <label className='form-check-label' htmlFor='kt_modal_update_role_option_4'>
-                  <div className='fw-bolder text-gray-800'>Trial</div>
-                  <div className='text-gray-600'>
-                    Best for people who need to preview content data, but don't need to make any
-                    updates
-                  </div> */}
-                {/* </label> */}
-                {/* end::Label */}
-              {/* </div> */}
-              {/* end::Radio */}
-            {/* </div> */}
-            {/* end::Input row */}
-            {/* end::Roles */}
-          {/* </div> */}
-          {/* end::Input group */}
+            {/* begin::Input */}
+            <select name="code" id="cars" className={clsx(
+               'form-control form-control-solid mb-3 mb-lg-0',
+               {'is-invalid': formik.touched.status && formik.errors.status},
+               {
+                 'is-valid': formik.touched.status && !formik.errors.status,
+               }
+             )}>
+             <option value="active">Active</option>
+             <option value="inactive">Inactive</option>
+             
+           </select>
+            {/* end::Input */}
+            {formik.touched.code && formik.errors.code && (
+              <div className='fv-plugins-message-container'>
+                <span role='alert'>{formik.errors.status}</span>
+              </div>
+            )}
+          </div>
+
+          
         </div>
         {/* end::Scroll */}
 

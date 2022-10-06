@@ -34,7 +34,7 @@ const UnitInfoCell: FC<Props> = ({unit}) => (
       <a href='#' className='text-gray-800 text-hover-primary mb-1'>
         {unit.name}
       </a>
-      <span>{unit.email}</span>
+      {/* <span>{unit.email}</span> */}
     </div>
   </div>
 )

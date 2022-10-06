@@ -15,15 +15,15 @@ type Props = {
 }
 
 const editNationalitychema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  name: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Name is required'),
+  // email: Yup.string()
+  //   .email('Wrong email format')
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Email is required'),
+  // name: Yup.string()
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Name is required'),
 })
 
 const NationalityEditModalForm: FC<Props> = ({nationality, isNationalityLoading}) => {
@@ -33,7 +33,7 @@ const NationalityEditModalForm: FC<Props> = ({nationality, isNationalityLoading}
   const [NationalityForEdit] = useState<Nationality>({
     ...nationality,
     // avatar: Nationality.avatar || initialNationality.avatar,
-    // role: nationality.role || initialNationality.role,
+    code: nationality.code || initialNationality.code,
     // position: nationality.position || initialNationality.position,
     name: nationality.name || initialNationality.name,
     status: nationality.status || initialNationality.status,
@@ -149,12 +149,42 @@ const NationalityEditModalForm: FC<Props> = ({nationality, isNationalityLoading}
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Full Name</label>
+            <label className='required fw-bold fs-6 mb-2'>Code</label>
             {/* end::Label */}
 
             {/* begin::Input */}
             <input
-              placeholder='Full name'
+              placeholder='code'
+              {...formik.getFieldProps('code')}
+              type='text'
+              name='code'
+              className={clsx(
+                'form-control form-control-solid mb-3 mb-lg-0',
+                {'is-invalid': formik.touched.code && formik.errors.code},
+                {
+                  'is-valid': formik.touched.code && !formik.errors.code,
+                }
+              )}
+              autoComplete='off'
+              disabled={formik.isSubmitting || isNationalityLoading}
+            />
+            {formik.touched.code && formik.errors.code && (
+              <div className='fv-plugins-message-container'>
+                <div className='fv-help-block'>
+                  <span role='alert'>{formik.errors.code}</span>
+                </div>
+              </div>
+            )}
+            {/* end::Input */}
+          </div>
+          <div className='fv-row mb-7'>
+            {/* begin::Label */}
+            <label className='required fw-bold fs-6 mb-2'>Name</label>
+            {/* end::Label */}
+
+            {/* begin::Input */}
+            <input
+              placeholder='name'
               {...formik.getFieldProps('name')}
               type='text'
               name='name'
@@ -180,34 +210,7 @@ const NationalityEditModalForm: FC<Props> = ({nationality, isNationalityLoading}
           {/* end::Input group */}
 
           {/* begin::Input group */}
-          <div className='fv-row mb-7'>
-            {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Email</label>
-            {/* end::Label */}
-
-            {/* begin::Input */}
-            <input
-              placeholder='Email'
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control form-control-solid mb-3 mb-lg-0',
-                {'is-invalid': formik.touched.email && formik.errors.email},
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email,
-                }
-              )}
-              type='email'
-              name='email'
-              autoComplete='off'
-              disabled={formik.isSubmitting || isNationalityLoading}
-            />
-            {/* end::Input */}
-            {formik.touched.email && formik.errors.email && (
-              <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
-              </div>
-            )}
-          </div>
+          
           <div className='fv-row mb-7'>
             {/* begin::Label */}
             <label className='required fw-bold fs-6 mb-2'>Status</label>

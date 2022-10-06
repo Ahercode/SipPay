@@ -34,7 +34,7 @@ const NationalityInfoCell: FC<Props> = ({nationality}) => (
       <a href='#' className='text-gray-800 text-hover-primary mb-1'>
         {nationality.name}
       </a>
-      <span>{nationality.email}</span>
+      {/* <span>{nationality.email}</span> */}
     </div>
   </div>
 )

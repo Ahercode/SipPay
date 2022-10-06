@@ -15,15 +15,15 @@ type Props = {
 }
 
 const editUnitSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  name: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Name is required'),
+  // email: Yup.string()
+  //   .email('Wrong email format')
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Email is required'),
+  // name: Yup.string()
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Name is required'),
 })
 
 const UnitEditModalForm: FC<Props> = ({unit, isUnitLoading}) => {
@@ -33,10 +33,10 @@ const UnitEditModalForm: FC<Props> = ({unit, isUnitLoading}) => {
   const [UnitForEdit] = useState<Unit>({
     ...unit,
     // avatar: Unit.avatar || initialUnit.avatar,
-    role: unit.role || initialUnit.role,
+    code: unit.code || initialUnit.code,
     // position: Unit.position || initialUnit.position,
     name: unit.name || initialUnit.name,
-    email: unit.email || initialUnit.email,
+    status: unit.status || initialUnit.status,
   })
 
   const cancel = (withRefresh?: boolean) => {
@@ -149,12 +149,42 @@ const UnitEditModalForm: FC<Props> = ({unit, isUnitLoading}) => {
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Full Name</label>
+            <label className='required fw-bold fs-6 mb-2'>Code</label>
             {/* end::Label */}
 
             {/* begin::Input */}
             <input
-              placeholder='Full name'
+              placeholder='code'
+              {...formik.getFieldProps('code')}
+              type='text'
+              name='code'
+              className={clsx(
+                'form-control form-control-solid mb-3 mb-lg-0',
+                {'is-invalid': formik.touched.code && formik.errors.code},
+                {
+                  'is-valid': formik.touched.code && !formik.errors.code,
+                }
+              )}
+              autoComplete='off'
+              disabled={formik.isSubmitting || isUnitLoading}
+            />
+            {formik.touched.code && formik.errors.code && (
+              <div className='fv-plugins-message-container'>
+                <div className='fv-help-block'>
+                  <span role='alert'>{formik.errors.code}</span>
+                </div>
+              </div>
+            )}
+            {/* end::Input */}
+          </div>
+          <div className='fv-row mb-7'>
+            {/* begin::Label */}
+            <label className='required fw-bold fs-6 mb-2'>Name</label>
+            {/* end::Label */}
+
+            {/* begin::Input */}
+            <input
+              placeholder='name'
               {...formik.getFieldProps('name')}
               type='text'
               name='name'
@@ -182,29 +212,25 @@ const UnitEditModalForm: FC<Props> = ({unit, isUnitLoading}) => {
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Email</label>
+            <label className='required fw-bold fs-6 mb-2'>Status</label>
             {/* end::Label */}
 
             {/* begin::Input */}
-            <input
-              placeholder='Email'
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control form-control-solid mb-3 mb-lg-0',
-                {'is-invalid': formik.touched.email && formik.errors.email},
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email,
-                }
-              )}
-              type='email'
-              name='email'
-              autoComplete='off'
-              disabled={formik.isSubmitting || isUnitLoading}
-            />
+            <select name="code" id="cars" className={clsx(
+               'form-control form-control-solid mb-3 mb-lg-0',
+               {'is-invalid': formik.touched.status && formik.errors.status},
+               {
+                 'is-valid': formik.touched.status && !formik.errors.status,
+               }
+             )}>
+             <option value="active">Active</option>
+             <option value="inactive">Inactive</option>
+             
+           </select>
             {/* end::Input */}
-            {formik.touched.email && formik.errors.email && (
+            {formik.touched.code && formik.errors.code && (
               <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
+                <span role='alert'>{formik.errors.status}</span>
               </div>
             )}
           </div>
