@@ -10,19 +10,19 @@ import {RegionSelectionHeader} from './RegionSelectionHeader'
 import {Region} from '../../core/_models'
 
 const regionsColumns: ReadonlyArray<Column<Region>> = [
+  // {
+  //   Header: (props) => <RegionSelectionHeader tableProps={props} />,
+  //   id: 'selection',
+  //   Cell: ({...props}) => <RegionSelectionCell id={props.data[props.row.index].id} />,
+  // },
   {
-    Header: (props) => <RegionSelectionHeader tableProps={props} />,
-    id: 'selection',
-    Cell: ({...props}) => <RegionSelectionCell id={props.data[props.row.index].id} />,
-  },
-  {
-    Header: (props) => <RegionCustomHeader tableProps={props} title='Name' className='min-w-125px' />,
-    id: 'name',
+    Header: (props) => <RegionCustomHeader tableProps={props} title='Code' className='min-w-125px' />,
+    id: 'code',
     Cell: ({...props}) => <RegionInfoCell region={props.data[props.row.index]} />,
   },
   {
-    Header: (props) => <RegionCustomHeader tableProps={props} title='Role' className='min-w-125px' />,
-    accessor: 'role',
+    Header: (props) => <RegionCustomHeader tableProps={props} title='Name' className='min-w-125px' />,
+    accessor: 'name',
   },
   // {
   //   Header: (props) => (
@@ -40,9 +40,9 @@ const regionsColumns: ReadonlyArray<Column<Region>> = [
   // },
   {
     Header: (props) => (
-      <RegionCustomHeader tableProps={props} title='Joined day' className='min-w-125px' />
+      <RegionCustomHeader tableProps={props} title='Status' className='min-w-125px' />
     ),
-    accessor: 'joined_day',
+    accessor: 'status',
   },
   {
     Header: (props) => (

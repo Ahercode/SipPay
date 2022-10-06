@@ -34,7 +34,7 @@ const RegionInfoCell: FC<Props> = ({region}) => (
       <a href='#' className='text-gray-800 text-hover-primary mb-1'>
         {region.name}
       </a>
-      <span>{region.email}</span>
+      {/* <span>{region.email}</span> */}
     </div>
   </div>
 )

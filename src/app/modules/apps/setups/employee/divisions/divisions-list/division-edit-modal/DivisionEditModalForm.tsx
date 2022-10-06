@@ -33,10 +33,9 @@ const DivisionEditModalForm: FC<Props> = ({division, isDivisionLoading}) => {
   const [DivisionForEdit] = useState<Division>({
     ...division,
     // avatar: Division.avatar || initialDivision.avatar,
-    role: division.role || initialDivision.role,
-    position: division.position || initialDivision.position,
+    status: division.status || initialDivision.status,
+    code: division.code || initialDivision.code,
     name: division.name || initialDivision.name,
-    email: division.email || initialDivision.email,
   })
 
   const cancel = (withRefresh?: boolean) => {
@@ -149,12 +148,42 @@ const DivisionEditModalForm: FC<Props> = ({division, isDivisionLoading}) => {
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
+            <label className='required fw-bold fs-6 mb-2'>Code</label>
+            {/* end::Label */}
+
+            {/* begin::Input */}
+            <input
+              placeholder='code'
+              {...formik.getFieldProps('name')}
+              type='text'
+              name='code'
+              className={clsx(
+                'form-control form-control-solid mb-3 mb-lg-0',
+                {'is-invalid': formik.touched.code && formik.errors.code},
+                {
+                  'is-valid': formik.touched.code && !formik.errors.code,
+                }
+              )}
+              autoComplete='off'
+              disabled={formik.isSubmitting || isDivisionLoading}
+            />
+            {formik.touched.code && formik.errors.code && (
+              <div className='fv-plugins-message-container'>
+                <div className='fv-help-block'>
+                  <span role='alert'>{formik.errors.code}</span>
+                </div>
+              </div>
+            )}
+            {/* end::Input */}
+          </div>
+          <div className='fv-row mb-7'>
+            {/* begin::Label */}
             <label className='required fw-bold fs-6 mb-2'>Name</label>
             {/* end::Label */}
 
             {/* begin::Input */}
             <input
-              placeholder='Full name'
+              placeholder='name'
               {...formik.getFieldProps('name')}
               type='text'
               name='name'
@@ -180,34 +209,7 @@ const DivisionEditModalForm: FC<Props> = ({division, isDivisionLoading}) => {
           {/* end::Input group */}
 
           {/* begin::Input group */}
-          <div className='fv-row mb-7'>
-            {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Code</label>
-            {/* end::Label */}
-
-            {/* begin::Input */}
-            <input
-              placeholder='Email'
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control form-control-solid mb-3 mb-lg-0',
-                {'is-invalid': formik.touched.email && formik.errors.email},
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email,
-                }
-              )}
-              type='email'
-              name='email'
-              autoComplete='off'
-              disabled={formik.isSubmitting || isDivisionLoading}
-            />
-            {/* end::Input */}
-            {formik.touched.email && formik.errors.email && (
-              <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
-              </div>
-            )}
-          </div>
+          
           {/* end::Input group */}
 
           {/* begin::Input group */}

@@ -34,7 +34,7 @@ const DivisionInfoCell: FC<Props> = ({division}) => (
       <a href='#' className='text-gray-800 text-hover-primary mb-1'>
         {division.name}
       </a>
-      <span>{division.email}</span>
+      {/* <span>{division.email}</span> */}
     </div>
   </div>
 )

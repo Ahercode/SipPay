@@ -15,15 +15,15 @@ type Props = {
 }
 
 const editBankSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  name: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Name is required'),
+  // email: Yup.string()
+  //   .email('Wrong email format')
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Email is required'),
+  // name: Yup.string()
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Name is required'),
 })
 
 const PaygroupEditModalForm: FC<Props> = ({paygroup, isPaygroupLoading}) => {

@@ -16,14 +16,14 @@ type Props = {
 
 const editRegionSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  name: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Name is required'),
+  //   .email('Wrong email format')
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Email is required'),
+  // name: Yup.string()
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Name is required'),
 })
 
 const RegionEditModalForm: FC<Props> = ({region, isRegionLoading}) => {
@@ -32,11 +32,9 @@ const RegionEditModalForm: FC<Props> = ({region, isRegionLoading}) => {
 
   const [regionForEdit] = useState<Region>({
     ...region,
-    // avatar: Region.avatar || initialRegion.avatar,
-    role: region.role || initialRegion.role,
-    // position: Region.position || initialRegion.position,
+    status: region.status || initialRegion.status,
     name: region.name || initialRegion.name,
-    email: region.email || initialRegion.email,
+    code: region.code || initialRegion.code,
   })
 
   const cancel = (withRefresh?: boolean) => {
@@ -149,12 +147,39 @@ const RegionEditModalForm: FC<Props> = ({region, isRegionLoading}) => {
           {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Full Name</label>
+            <label className='required fw-bold fs-6 mb-2'>Code</label>
+            <input
+              placeholder='code'
+              {...formik.getFieldProps('code')}
+              type='text'
+              name='code'
+              className={clsx(
+                'form-control form-control-solid mb-3 mb-lg-0',
+                {'is-invalid': formik.touched.code && formik.errors.code},
+                {
+                  'is-valid': formik.touched.code && !formik.errors.code,
+                }
+              )}
+              autoComplete='off'
+              disabled={formik.isSubmitting || isRegionLoading}
+            />
+            {formik.touched.code && formik.errors.code && (
+              <div className='fv-plugins-message-container'>
+                <div className='fv-help-block'>
+                  <span role='alert'>{formik.errors.code}</span>
+                </div>
+              </div>
+            )}
+            {/* end::Input */}
+          </div>
+          <div className='fv-row mb-7'>
+            {/* begin::Label */}
+            <label className='required fw-bold fs-6 mb-2'>Name</label>
             {/* end::Label */}
 
             {/* begin::Input */}
             <input
-              placeholder='Full name'
+              placeholder='name'
               {...formik.getFieldProps('name')}
               type='text'
               name='name'
@@ -177,34 +202,27 @@ const RegionEditModalForm: FC<Props> = ({region, isRegionLoading}) => {
             )}
             {/* end::Input */}
           </div>
-          {/* end::Input group */}
-
-          {/* begin::Input group */}
           <div className='fv-row mb-7'>
             {/* begin::Label */}
-            <label className='required fw-bold fs-6 mb-2'>Email</label>
+            <label className='required fw-bold fs-6 mb-2'>Status</label>
             {/* end::Label */}
 
             {/* begin::Input */}
-            <input
-              placeholder='Email'
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control form-control-solid mb-3 mb-lg-0',
-                {'is-invalid': formik.touched.email && formik.errors.email},
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email,
-                }
-              )}
-              type='email'
-              name='email'
-              autoComplete='off'
-              disabled={formik.isSubmitting || isRegionLoading}
-            />
+            <select name="code" id="cars" className={clsx(
+               'form-control form-control-solid mb-3 mb-lg-0',
+               {'is-invalid': formik.touched.status && formik.errors.status},
+               {
+                 'is-valid': formik.touched.status && !formik.errors.status,
+               }
+             )}>
+             <option value="active">Active</option>
+             <option value="inactive">Inactive</option>
+             
+           </select>
             {/* end::Input */}
-            {formik.touched.email && formik.errors.email && (
+            {formik.touched.code && formik.errors.code && (
               <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
+                <span role='alert'>{formik.errors.status}</span>
               </div>
             )}
           </div>
