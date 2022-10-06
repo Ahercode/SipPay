@@ -248,7 +248,7 @@ const PrivateRoutes = () => {
           }
         />
         <Route
-          path='apps/setups/employee/units/*'
+          path='apps/setups/employee/unit/*'
           element={
             <SuspensedView>
               <UnitsPage />

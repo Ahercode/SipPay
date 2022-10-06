@@ -139,8 +139,9 @@ export function AsideMenuMain() {
           <AsideMenuItem to='apps/setups/employee/salary-upgrade/salaryUpgrades' title='Salary Upgrade' hasBullet={true} />
           <AsideMenuItem to='apps/setups/employee/region/regions' title='Regions' hasBullet={true} />
           <AsideMenuItem to='apps/setups/employee/grade/grades' title='Grades' hasBullet={true} />
-          <AsideMenuItem to='apps/setups/employee/notch/notchs' title='Notches' hasBullet={true} />
           <AsideMenuItem to='apps/setups/employee/nationality/nationalitys' title='Nationality' hasBullet={true} />
+          <AsideMenuItem to='apps/setups/employee/notch/notchs' title='Notches' hasBullet={true} />
+          <AsideMenuItem to='apps/setups/employee/unit/units' title='Units' hasBullet={true} />
         </AsideMenuItemWithSub>
         <AsideMenuItemWithSub to='/crafted/setup/'  title='Human Resource' hasBullet={true} >
           <AsideMenuItem to='/apps/setups/hr/appraisal/appraisals' title='Appraisals' hasBullet={true} />
