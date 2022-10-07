@@ -42,6 +42,9 @@ import SavingSchemesPage from '../modules/apps/setups/payroll/saving-scheme/Savi
 import TaxsPage from '../modules/apps/setups/payroll/tax/TaxsPage'
 import ApprovalLevelsPage from '../modules/apps/setups/payroll/approval-level/ApprovalLevelsPage'
 import { Horizontal } from '../modules/wizards/components/Horizontal'
+import { Tables } from '../modules/tran-payroll/components/Tables'
+import { TablesWidget6 } from '../../_metronic/partials/widgets'
+import TestMedicalPage from '../modules/apps/transactions/hr/Medical'
 
 
 const PrivateRoutes = () => {
@@ -437,6 +440,14 @@ const PrivateRoutes = () => {
           element={
             <SuspensedView>
               <TaxsPage />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='/apps/transactions/hr/*'
+          element={
+            <SuspensedView>
+              <TestMedicalPage />
             </SuspensedView>
           }
         />
