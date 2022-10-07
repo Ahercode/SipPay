@@ -23,12 +23,12 @@ export function AsideMenuMain() {
         title='Employees'
         fontIcon='bi bi-people fs-2'
       />
-      <AsideMenuItem
+      {/* <AsideMenuItem
         to='/apps/transactions/hr/table'
         icon='/media/icons/custom/people.svg'
         title='Test'
         fontIcon='bi bi-people fs-2'
-      />
+      /> */}
       {/* <AsideMenuItem to='/apps/bank/banks' title='Bank' hasBullet={false} /> */}
 
 

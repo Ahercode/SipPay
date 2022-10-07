@@ -2,7 +2,7 @@ import {Navigate, Route, Routes, Outlet} from 'react-router-dom'
 import {PageLink, PageTitle} from '../../../../../_metronic/layout/core'
 
 import { TablesWidget6 } from '../../../../../_metronic/partials/widgets'
-import TestPage from './test'
+// import TestPage from './test'
 
 
 const widgetsBreadCrumbs: Array<PageLink> = [
@@ -30,7 +30,7 @@ const TestMedicalPage = () => {
             <>
               <PageTitle breadcrumbs={widgetsBreadCrumbs}>Tables</PageTitle>
               {/* <TablesWidget6 className='card-xl-stretch mb-5 mb-xl-8' /> */}
-              <TestPage className='card-xl-stretch mb-5 mb-xl-8' />
+              {/* <TestPage className='card-xl-stretch mb-5 mb-xl-8' /> */}
             </>
           }
         />
