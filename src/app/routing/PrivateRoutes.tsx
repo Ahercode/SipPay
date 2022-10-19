@@ -44,7 +44,6 @@ import ApprovalLevelsPage from '../modules/apps/setups/payroll/approval-level/Ap
 import { Horizontal } from '../modules/wizards/components/Horizontal'
 import { Tables } from '../modules/tran-payroll/components/Tables'
 import { TablesWidget6 } from '../../_metronic/partials/widgets'
-import TestMedicalPage from '../modules/apps/transactions/hr/Medical'
 
 
 const PrivateRoutes = () => {
@@ -443,14 +442,7 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
-        <Route
-          path='/apps/transactions/hr/*'
-          element={
-            <SuspensedView>
-              <TestMedicalPage />
-            </SuspensedView>
-          }
-        />
+        
         <Route
           path='apps/setups/payroll/approval-level/*'
           element={
